@@ -7,7 +7,7 @@
 
 ## 현재 상태
 - 저장소 `frpsy/agent-skills`(Private)를 만들었고, PR https://github.com/frpsy/agent-skills/pull/1 이 머지됨으로 표시됩니다.
-- **미확인**: 클론에서 확인하니 `main`에는 `README.md`만 있고 `setup-skills.sh`, `setup-skills.ps1`이 보이지 않았습니다. 원인은 모릅니다. 먼저 GitHub 웹에서 `main`에 파일 3개(README.md, setup-skills.sh, setup-skills.ps1)가 있는지 확인하세요. 없으면 작업 브랜치 `claude/magical-wozniak-eonwtu`에 있습니다.
+- 확인함: GitHub 웹에서 `main`에 `README.md`, `setup-skills.sh`, `setup-skills.ps1`이 있는 것을 확인했습니다(머지 커밋 `72dbc6d`). 클라우드 클론에서 한때 README만 보인 것은 머지 직후 fetch가 반영되지 않았던 것으로 보이나 원인은 직접 확인하지 못했습니다.
 - 클라우드 컨테이너에는 스킬이 설치되어 있지만 세션이 끝나면 사라집니다.
 - 이 세션에서 `-g` 옵션은 Karpathy 스킬 1개만 실제로 실행했습니다. Windows와 맥북 실기기에서는 확인하지 않았습니다.
 - Windows 노트북(SYP)은 클라우드 세션에서 원격 연결이 되지 않았습니다(원인 미확인, Claude 앱 업데이트 필요 가능성만 안내됨). 맥북 연결 요청은 사용자가 거절했습니다.
@@ -27,7 +27,7 @@
    ```powershell
    node -v
    ```
-2. 위 표의 명령을 순서대로 실행합니다. 저장소 스크립트가 `main`에 있으면 아래로 한 번에 설치됩니다.
+2. 위 표의 명령을 순서대로 실행합니다. 저장소 스크립트로 한 번에 설치됩니다.
    ```powershell
    git clone https://github.com/frpsy/agent-skills
    ./agent-skills/setup-skills.ps1
