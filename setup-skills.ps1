@@ -1,8 +1,19 @@
 # Windows PowerShell용. 전역(-g) 설치라 모든 프로젝트에서 보입니다.
-$ErrorActionPreference = "Stop"
-npx -y skills add multica-ai/andrej-karpathy-skills -g -y
-npx -y skills add bradautomates/claude-video --skill watch -g -y
-npx -y skills add DaleSeo/korean-skills@humanizer -g -y
-npx -y skills add obra/superpowers -g -y
-npx -y skills add anthropics/skills --skill skill-creator -g -y
-# Agent Memory는 서버가 필요해 제외했습니다. 필요할 때 따로 설치합니다.
+# 일부 에이전트(PromptScript 등)는 전역 설치를 지원하지 않아 오류를 냅니다.
+# 그 오류로 전체가 멈추지 않도록 각 명령을 계속 실행하고, 마지막에 결과를 확인합니다.
+$cmds = @(
+  "multica-ai/andrej-karpathy-skills",
+  "obra/superpowers",
+  "DaleSeo/korean-skills@humanizer",
+  "bradautomates/claude-video --skill watch",
+  "anthropics/skills --skill skill-creator",
+  "rohitg00/agentmemory"
+)
+foreach ($c in $cmds) {
+  Write-Host "=== skills add $c"
+  Invoke-Expression "npx -y skills add $c -g -y"
+}
+Write-Host ""
+Write-Host "설치 확인 (오류 메시지가 있어도 아래 목록에 보이면 설치된 것입니다):"
+npx -y skills ls -g
+# Agent Memory는 스킬만 설치합니다. 기억 기능은 별도 서버(npx -y @agentmemory/agentmemory@latest)가 있어야 동작합니다.
